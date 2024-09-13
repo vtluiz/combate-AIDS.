@@ -1,0 +1,45 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Criar o DataFrame a partir dos dados fornecidos
+data = {
+    'time': [988, 413, 1119, 680, 1043, 1181, 592, 1061, 973, 553, 499, 383, 1158, 1132, 1082, 511, 1131, 1010],
+    'trt': [2, 3, 0, 3, 3, 0, 0, 2, 1, 1, 2, 3, 0, 0, 3, 2, 3, 3],
+    'age': [42, 30, 37, 34, 35, 34, 43, 36, 27, 46, 42, 30, 24, 24, 36, 41, 38, 39],
+    'wtkg': [71.76131, 72.67629, 73.75514, 70.03769, 63.02845, 71.65247, 69.93948, 60.91513, 61.31507, 62.11188, 71.47559, 60.90839, 60.56445, 76.56233, 65.50488, 70.81455, 80.46146, 61.92101],
+    'hemo': [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1],
+    'homo': [0, 1, 1, 0, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 0, 1, 1],
+    'drugs': [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    'karnof': [100, 100, 90, 100, 100, 81, 90, 90, 100, 90, 90, 100, 100, 100, 100, 100, 100, 100],
+    'oprior': [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    'z30': [1, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1],
+    'preanti': [911, 414, 810, 0, 3, 3, 407, 761, 12, 620, 238, 125, 457, 0, 22, 0, 0, 522]
+}
+
+df = pd.DataFrame(data)
+
+# Histograma da Idade
+plt.figure(figsize=(8,6))
+sns.histplot(df['age'], kde=True, bins=10)
+plt.title('Distribuição da Idade dos Pacientes')
+plt.xlabel('Idade')
+plt.ylabel('Frequência')
+plt.show()
+
+# Boxplot do Peso por Tratamento
+plt.figure(figsize=(8,6))
+sns.boxplot(x='trt', y='wtkg', data=df)
+plt.title('Distribuição do Peso por Grupo de Tratamento')
+plt.xlabel('Grupo de Tratamento')
+plt.ylabel('Peso (kg)')
+plt.show()
+
+# Gráfico de Dispersão entre Idade e Peso
+plt.figure(figsize=(8,6))
+sns.scatterplot(x='age', y='wtkg', hue='trt', palette='viridis', data=df)
+plt.title('Dispersão entre Idade e Peso')
+plt.xlabel('Idade')
+plt.ylabel('Peso (kg)')
+plt.legend(title='Tratamento')
+plt.show()
