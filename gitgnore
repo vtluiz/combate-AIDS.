@@ -1,0 +1,21 @@
+# Arquivos Python compilados
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Diretórios de saída
+output/
+
+# Ambiente virtual
+venv/
+env/
+
+# Arquivos de configuração do sistema
+*.swp
+*.swo
+*.DS_Store
+
+# Arquivos de log
+*.log
+
